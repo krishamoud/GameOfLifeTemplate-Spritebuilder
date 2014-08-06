@@ -15,6 +15,8 @@
 
 - (void)onEnter;
 - (void)setupGrid;
+- (void)evolveStep;
+- (void)countNeighbors;
 
 
 
