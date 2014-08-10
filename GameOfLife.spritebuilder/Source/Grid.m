@@ -92,7 +92,7 @@ static const int GRID_COLUMNS = 10;
     [self countNeighbors];
     
     //update each Creature's state
-    //[self updateCreatures];
+    [self updateCreatures];
     
     //update the generation so the label's text will display the correct generation
     _generation++;
@@ -149,5 +149,26 @@ static const int GRID_COLUMNS = 10;
     }
     return isIndexValid;
 }
+
+- (void)updateCreatures
+{
+    for(int i = 0; i < [_gridArray count]; i++)
+    {
+        for(int j = 0; j < [_gridArray[i] count]; j++)
+        {
+            Creature *currentCreature = _gridArray[i][j];
+            
+            if(currentCreature.livingNeighbors == 3)
+            {
+                currentCreature.isAlive = YES;
+            }
+            else if(currentCreature.livingNeighbors <=1 || currentCreature.livingNeighbors >= 4)
+            {
+                currentCreature.isAlive = NO;
+            }
+        }
+    }
+}
+
 
 @end
